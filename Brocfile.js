@@ -11,6 +11,9 @@ var app = new EmberApp({
 // Modernizr
 app.import('vendor/modernizr.js');
 
+// JQuery UI
+app.import('vendor/jquery-ui.js');
+
 // Bootstrap
 app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot', { destDir: 'fonts' });

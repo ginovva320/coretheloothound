@@ -61,28 +61,6 @@
       {{character-select characters=characters action="signup"}}
       {{raid-permissions raid=this account=account newPermission="newPermission" deletePermission="deletePermission"}}
     </section>
-    <section class="signups">
-      {{raid-group}}
-      {{raid-waiting-list}}
-      <div class="wrapper">
-        <div class="signup-wrapper waiting-list">
-          <h3><i class="fa fa-clock-o fa-fw"></i> <small>Waiting List</small></h3>
-          {{#each waitingListAccount in waitingListByAccount}}
-            <h4>{{waitingListAccount.account.battletag}}</h4>
-            {{#each signup in waitingListAccount.signups itemController="signup"}}
-              {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
-            {{/each}}
-          {{/each}}
-        </div>
-        {{#each seatedRole in seatedByRole}}
-          <div class="signup-wrapper">
-            <h3><i {{bind-attr class="seatedRole.role.iconClasses"}}></i> <small>{{seatedRole.role.name}}</small></h3>
-            {{#each signup in seatedRole.signups itemController="signup"}}
-              {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
-            {{/each}}
-          </div>
-        {{/each}}
-      </div>
-    </section>
+    {{raid-signups waitingList=waitingListByAccount}}
   </div>
 </div>

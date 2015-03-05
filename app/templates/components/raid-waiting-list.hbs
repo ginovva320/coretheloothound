@@ -2,3 +2,11 @@
 <div class="targets">
   {{raid-signup-target role="waiting-list"}}
 </div>
+<div class="signup-wrapper">
+  {{#each waitingListAccount in waitingList}}
+    <h4>{{waitingListAccount.account.battletag}}</h4>
+    {{#each signup in waitingListAccount.signups itemController="signup"}}
+    {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup" selectSignup="selectSignup"}}
+    {{/each}}
+  {{/each}}
+</div>

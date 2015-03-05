@@ -288,6 +288,10 @@ header {
       min-height: 100px;
       margin-bottom: 20px;
 
+      &.dragging .targets {
+        display: block;
+      }
+
       .targets {
         clear: both;
         overflow: auto;
@@ -301,13 +305,6 @@ header {
           .make-md-column(4);
           height: 100%;
 
-          &.highlight {
-            .target {
-              opacity: 1.0;
-              border-style: solid;
-            }
-          }
-
           .target {
             min-height: 100px;
             height: 100%;
@@ -317,6 +314,16 @@ header {
             border-style: dashed;
             background-position: center center;
             background-repeat: no-repeat;
+            visibility: hidden;
+
+            &.dragging {
+              visibility: visible;
+            }
+
+            &.highlight {
+              opacity: 1.0;
+              border-style: solid;
+            }
           }
 
           &.tank {
@@ -341,50 +348,46 @@ header {
       }
     }
 
-    .wrapper {
-      .make-row();
+    .signup-wrapper {
+      .make-md-column(3);
 
-      .signup-wrapper {
-        .make-md-column(3);
+      h3 i {
+        &.tank { .icon(0, 0, 32px); }
+        &.healing { .icon(0, 1, 32px); }
+        &.dps { .icon(0, 2, 32px); }
+        margin: 0 5px 0 0;
+        display: block;
+        float: left;
+      }
 
-        h3 i {
-          &.tank { .icon(0, 0, 32px); }
-          &.healing { .icon(0, 1, 32px); }
-          &.dps { .icon(0, 2, 32px); }
-          margin: 0 5px 0 0;
+      .signup {
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        background-color: @gray-darker;
+        cursor: move;
+
+        small {
+          color: @gray;
+        }
+
+        &[title]:not([title=""]) {
+          .class {
+            border-bottom: 1px dotted gray;
+          }
+        }
+
+        i.role {
+          &.tank { .icon(0, 0, 20px); }
+          &.healing { .icon(0, 1, 20px); }
+          &.dps { .icon(0, 2, 20px); }
+          margin: 0 5px 0 -5px;
           display: block;
           float: left;
         }
 
-        .signup {
-          border-radius: 5px;
-          padding: 5px 10px;
-          margin-bottom: 5px;
-          background-color: @gray-darker;
-          cursor: move;
-
-          small {
-            color: @gray;
-          }
-
-          &[title]:not([title=""]) {
-            .class {
-              border-bottom: 1px dotted gray;
-            }
-          }
-
-          i.role {
-            &.tank { .icon(0, 0, 20px); }
-            &.healing { .icon(0, 1, 20px); }
-            &.dps { .icon(0, 2, 20px); }
-            margin: 0 5px 0 -5px;
-            display: block;
-            float: left;
-          }
-
-          .seat i.role {
-            margin: 0 5px 0 0;
-          }
+        .seat i.role {
+          margin: 0 5px 0 0;
         }
       }
     }

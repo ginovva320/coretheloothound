@@ -2,12 +2,26 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: 'signup',
+  classNameBindings: ['signup.seated', 'roleSlugs'],
 
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
 
-  attributeBindings: ['draggable:draggable', 'note:title'],
-  draggable: true,
+  attributeBindings: ['note:title'],
+
+  roleSlugs: function() {
+    return this.get('signup.roles').mapBy('slug').join(' ');
+  }.property('signup.roles'),
+
+  didInsertElement: function() {
+    console.log("Draggable: " + this.get('signup.character.name'));
+    this.$().draggable({
+      addClasses: false,
+      containment: "section.signups",
+      revert: "invalid",
+      revertDuration: 200
+    });
+  },
 
   note: function() {
     return this.get('signup.note');
