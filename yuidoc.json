@@ -1,0 +1,12 @@
+{
+  "name": "coretheloothound",
+  "description": "Ember.js front end to the By Fire Be Purged raiding API",
+  "version": "0.0.0",
+  "options": {
+    "paths": [
+      "app"
+    ],
+    "exclude": "vendor",
+    "outdir": "docs"
+  }
+}
